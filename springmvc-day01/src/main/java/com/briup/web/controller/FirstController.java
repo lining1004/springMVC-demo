@@ -1,4 +1,4 @@
-package com.briup.web;
+package com.briup.web.controller;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
@@ -34,5 +34,7 @@ public class FirstController implements Controller {
         mv.setViewName("hello");
         mv.addObject("username",username);
         return mv;
+
+        //response.getWriter.println("hello "+username)
     }
 }

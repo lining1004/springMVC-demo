@@ -1,4 +1,4 @@
-package com.briup.web;
+package com.briup.web.controller;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;

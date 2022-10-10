@@ -18,9 +18,14 @@
         Handler /Controller
         将url对应handler器进行操作请求
     -->
-    <bean name="/hello" class="com.briup.web.HelloController"/>
-    <bean name="/first" class="com.briup.web.FirstController"/>
-
+    <bean name="/hello" class="com.briup.web.controller.HelloController"/>
+    <bean name="/first" class="com.briup.web.controller.FirstController"/>
+    <bean name="/hi" class="com.briup.web.controller.HiController"/>
+    <!--
+       每个处理器在处理url请求前，必须有一个对应的适配器对象调用处理方法，
+       我们自定义的处理器因为缺少适配器对象，导致500 服务器错误：
+       No adapter for handler
+    <bean name="/student" class="com.briup.web.controller.StudentController"/>-->
     <!--5.配置视图解析器：
         解析ModelAndView对象中逻辑视图名
         前缀 后缀  jstl视图解析器
