@@ -16,6 +16,26 @@
     -->
     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
     <!--3.配置处理适配器对象
-
+        接口类型：HandlerAdapter
+        功能： 调用处理器/控制器中的方法
     -->
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+
+    <!--4.创建处理器/控制器
+        Handler /Controller
+        将url对应handler器进行操作请求
+    -->
+    <bean name="/hello" class="com.briup.web.HelloController"/>
+    <!--5.配置视图解析器：
+        解析ModelAndView对象中逻辑视图名
+        前缀 后缀  jstl视图解析器
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+    </bean>
+
+
+
 </beans>
