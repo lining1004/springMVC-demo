@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--1.配置DispatcherServlet：web.xml-->
+    <!--2.配置HandlerMapping对象
+      面向接口编程：HandlerMapping接口
+       class: 接口的实现类
+       该处理映射器功能:根据bean对象的name和请求发送的url进行映射。
+       当你请求时，根据url找到对应的Bean对象（控制器对象 处理器对象）处理
+    -->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+    <!--3.配置处理适配器对象
+
+    -->
+</beans>
