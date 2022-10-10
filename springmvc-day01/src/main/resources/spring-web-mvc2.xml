@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--映射器  适配器 spring webmvc 包中默认通过一个配置Dispatcher.properties 定义好
+        项目启动时，自动创建对应的类型的映射器 和适配器。无需用户手动创建
+    -->
+
+
+
+    <!--4.创建处理器/控制器
+        Handler /Controller
+        将url对应handler器进行操作请求
+    -->
+    <bean name="/hello" class="com.briup.web.HelloController"/>
+    <bean name="/first" class="com.briup.web.FirstController"/>
+
+    <!--5.配置视图解析器：
+        解析ModelAndView对象中逻辑视图名
+        前缀 后缀  jstl视图解析器
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+    </bean>
+
+
+    <!--解决静态资源无法访问的问题：
+        css 文件  js  png ...
+        /css/style.css
+
+        实现原理：通过ResourceHttpRequestHandler类实现 了解即可
+    -->
+
+    <!--<mvc:resources mapping="/css/**" location="/css/"/>-->
+    <!--
+         针对多种不同类型的静态资源。
+         DefaultServletHttpRequestHandler对象实现处理静态资源
+
+    -->
+    <mvc:default-servlet-handler/>
+</beans>

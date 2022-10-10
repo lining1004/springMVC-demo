@@ -14,15 +14,32 @@
         <!--2.设置DispatcherServlet读取的spring配置文件-->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring-web-mvc.xml</param-value>
+            <param-value>classpath:spring-web-mvc2.xml</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
-        <!--处理用户的所有请求，统一交给DispatcherServlet处理-->
+        <!--处理用户的所有请求，统一交给DispatcherServlet处理
+            / 表示用户所有的请求,当用户的返回信息中包含静态资源的访问
+
+            jsp页面中 包含 css文件的访问 导致静态资源无法访问
+            解决方案： 1.servlet解决：
+                     2.springMVC提供解决
+
+
+        -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-
-
+    <!--通过servlet解决静态资源无法访问的问题
+        通过利用一个DefaultServlet对象处理静态资源：
+        处理当遇到.css结尾请求路径，直接访问该资源进行返回
+        名字叫default的Servlet在哪里创建的？？？
+        tomcat自动读取conf目录的下的web.xml文件
+        web.xml文件定义了DefualtServlet对象
+    -->
+    <!--<servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
+    </servlet-mapping>-->
 </web-app>
