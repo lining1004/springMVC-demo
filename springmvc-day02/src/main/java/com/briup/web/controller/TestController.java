@@ -7,21 +7,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 创建一个springMVC中的控制器/处理器
- * 作用： 接收请求，做出响应
- * 要求：必须实现一个Controller接口
  * @Author lining
- * @Date 2022/10/10
+ * @Date 2022/10/11
  */
-public class HelloController implements Controller {
+public class TestController implements Controller {
+
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //1.通过请求对象获取参数信息
         String username = request.getParameter("username");
         //2.封装参数，传递给service层（.....）
-        String threadName = Thread.currentThread().getName();
-        System.out.println("handleRequest...."+threadName);
-        //System.out.println(1/0);
+        System.out.println("handleRequest....");
+        System.out.println(1/0);
         //3.根据service方法，做出响应:通过模型视图对象实现
         ModelAndView mv = new ModelAndView();
         /*

@@ -14,7 +14,7 @@
         <!--2.设置DispatcherServlet读取的spring配置文件-->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring-web-mvc.xml</param-value>
+            <param-value>classpath:springmvc-annotation.xml</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

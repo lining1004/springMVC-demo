@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--创建拦截器对象-->
+    <bean id="myInterceptor" class="com.briup.web.interceptor.MyHandlerInterceptor"/>
+    <bean id="testInterceptor" class="com.briup.web.interceptor.TestInterceptor"/>
+    <bean id="threadLocalInterceptor" class="com.briup.web.interceptor.ThreadLocalInterceptor"/>
+    <!--通过springMVC提供的mvc标签实现配置拦截器规则-->
+    <mvc:interceptors>
+        <!--测试拦截器-->
+        <mvc:interceptor>
+            <!--任意路径进行拦截-->
+            <mvc:mapping path="/**"/>
+            <!--对/test不进行拦截-->
+            <mvc:exclude-mapping path="/test"/>
+            <ref bean="threadLocalInterceptor"/>
+        </mvc:interceptor>
+        <!--日志拦截器-->
+        <!--权限拦截器-->
+    </mvc:interceptors>
+
+
+
+
+
+
+    <!--3.创建一个处理器-->
+    <bean name="/hello" class="com.briup.web.controller.HelloController"/>
+    <bean name="/test" class="com.briup.web.controller.TestController"/>
+
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+    </bean>
+    <mvc:default-servlet-handler/>
+</beans>
