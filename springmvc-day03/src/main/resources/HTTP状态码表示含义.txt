@@ -1,0 +1,18 @@
+HTTP状态 404 资源找不到
+1.访问的路径与服务器部署（静态/动态）资源的路径不同。
+2.请求头参数信息与请求方法中设置的 header={} 规则不同
+  header={"username"} 请求头必须包含username请求头参数
+
+HTTP状态 405 - 方法不允许
+1.jsp不支持 PUT、DELETE方法
+2.请求的url路径正确，设置方法请求方式POST/PUT不支持该请求方式delete
+HTTP状态 400 - 错误的请求
+1.请求报文中的参数不符合 请求方法中@RequestMapping 设置的param要求
+   param={"username"} 必须有username参数
+HTTP状态 415 - 不支持的媒体类型MediaType
+1.请求报文中的请求头Content-type参数值 不符合 @Remapping 设置SpringMVC消费类型
+HTTP状态 406 - 不可接收
+1.响应的数据格式不符合浏览器能够处理的数据格式。
+  浏览器是通过请求头中Accept参数设置只能接收text/html
+  但@RequstMapping  produces=返回数据设置的格式applicaiton/json
+
