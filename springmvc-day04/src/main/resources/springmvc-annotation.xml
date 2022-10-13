@@ -11,8 +11,11 @@
         http://www.springframework.org/schema/mvc
         https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-
-
+    <!--创建一个Bean对象 ：-->
+    <bean id="st" class="com.briup.bean.Student">
+        <property name="id" value="202001"/>
+        <property name="name" value="lisi"/>
+    </bean>
 
 
     <mvc:annotation-driven/>
