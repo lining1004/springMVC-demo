@@ -11,6 +11,7 @@
         <module>springmvc-day01</module>
         <module>springmvc-day02</module>
         <module>springmvc-day03</module>
+        <module>springmvc-day04</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
