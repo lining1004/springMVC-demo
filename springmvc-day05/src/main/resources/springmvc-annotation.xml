@@ -10,9 +10,40 @@
         https://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
         https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--
+        创建默认的异常处理对象，实现异常信息处理：返回指定的用户页码
+        默认tomact的错误提示页码。
+        什么类型的异常对应什么指定的页面
+    -->
+    <!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        &lt;!&ndash;设置异常返回的提示页面&ndash;&gt;
+        <property name="defaultErrorView" value="error"></property>
+        &lt;!&ndash;获取到异常信息对象名称 exception ,jsp获取该对象
+            手动指定异常对象名称
+        &ndash;&gt;
+        <property name="exceptionAttribute" value="ex"/>
+        &lt;!&ndash;
+            对应不同异常信息Exception返回不同的页面视图名
+        &ndash;&gt;
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.sql.SQLException">error_sql</prop>
+                <prop key="java.lang.ClassNotFoundException">error_class</prop>
+            </props>
+        </property>
 
-    <mvc:annotation-driven/>
-    <context:component-scan base-package="com.briup.web.controller"/>
+    </bean>-->
+    <!--1.配置转换器对象 -->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <!--时间类型转换器-->
+                <bean class="com.briup.web.controller.StringToDateConverter"></bean>
+            </set>
+        </property>
+    </bean>
+    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+    <context:component-scan base-package="com.briup.web"/>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>

@@ -13,14 +13,7 @@
     <title>测试</title>
 </head>
 <body>
-    <%--
-     el表达式获取的数据来自ModelAndView对象
-     模型数据
-        将数据渲染到指定的视图中
-
-
-    --%>
-    <h3>hello ${username }</h3>
-    <h3>hello ${userId }</h3>
+    <h3>系统内部错误，请联系管理员</h3>
+    <h3>错误原因：${ex}</h3>
 </body>
 </html>
